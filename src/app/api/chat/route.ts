@@ -4,3 +4,5 @@ export async function POST(req: Request) {
 }
 
 // Resolve Gemini startChat history role error
+
+// Strict alternating role sanitizer implementation
