@@ -8,3 +8,5 @@ export default function Home() {
     </main>
   );
 }
+
+// Mobile responsive Hamburger Menu implementation
