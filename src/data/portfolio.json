@@ -1,0 +1,318 @@
+{
+  "personalInfo": {
+    "name": "Prabesh Shah",
+    "tagline": "Autonomous AI & Systems Orchestrator",
+    "bio": "Specialized in engineering multi-agent networks, quantitative trading algorithms, Vector search integration, and production-grade MERN + Kotlin codebases.",
+    "email": "contact@prabeshshah.dev",
+    "github": "https://github.com/Prabesh1919",
+    "linkedin": "https://linkedin.com",
+    "titles": [
+      "AI Engineer",
+      "Full-Stack Architect",
+      "Quant Developer"
+    ],
+    "stats": [
+      {
+        "label": "Active Codebases",
+        "val": "6+"
+      },
+      {
+        "label": "AI Platforms",
+        "val": "Tier 4"
+      },
+      {
+        "label": "quant Slippage",
+        "val": "0.0035%"
+      },
+      {
+        "label": "Location",
+        "val": "Nepal 🇳🇵"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "stockagent",
+      "title": "🏔️ Elite NEPSE AI Trading Agent",
+      "subtitle": "Autonomous Quant Trading Ensemble for NEPSE",
+      "description": "An institutional-grade self-improving AI quantitative trading agent built to crawl floorsheets, classify market regimes, and execute automated broker transactions.",
+      "achievements": [
+        "Regime-Switching Ensemble: Dynamically tunes strategies (Momentum, Mean Reversion) mapped to volatile/bull/bear trends.",
+        "Concept Drift Block: Page-Hinkley cumulative sum algorithm registers rolling residuals to freeze allocations under high drift.",
+        "Autonomous Broker Execution: Automated TMS integration with headless crawler pipelines resolving session challenges.",
+        "Statistical Arbitrage: Co-integration analytics triggering pairs trades (e.g. NABIL vs NICA) on rolling spread Z-scores."
+      ],
+      "tech": [
+        "Python",
+        "FastAPI",
+        "Playwright",
+        "Scikit-Learn",
+        "Redis",
+        "PostgreSQL",
+        "Tailwind CSS"
+      ],
+      "architecture": "[Live Data/Floorsheet] -> [Regime Classifier] -> [Self-Improving Brain] -> [Kelly Risk Sizer] -> [TMS Broker Execution]",
+      "category": "AI & Quant",
+      "repo": "https://github.com/Prabesh1919/Stockagent-main"
+    },
+    {
+      "id": "projmanager",
+      "title": "🏛️ AI Autonomous Web Project Manager",
+      "subtitle": "Self-Governing Distributed Multi-Agent Workspace",
+      "description": "A secure web framework orchestrating complex development sprints using multi-agent loops and decentralized synchronization protocols.",
+      "achievements": [
+        "CRDT-Lite & Vectors: WebSocket mesh supporting vector clock causalities, handling concurrency on fields seamlessly.",
+        "SRE Autopilot: SLO-based adaptive throttling, degradation thresholds, and fault isolation behaviors protecting latency limits.",
+        "Safety Override: Decentralized governance engines integrating SHA-256 cryptographically signed activity logging.",
+        "Vibrant Client Interface: Responsive React 19 Kanban structure with HTML5 drag-and-drop actions."
+      ],
+      "tech": [
+        "React 19",
+        "Vite 6",
+        "Node.js v24",
+        "Express",
+        "MongoDB",
+        "Redis",
+        "Socket.io",
+        "BullMQ"
+      ],
+      "architecture": "[React Frontend (Vite)] <-> [WebSockets/CRDT-Lite] <-> [Express Server] <-> [BullMQ/Redis] <-> [MongoDB Schema]",
+      "category": "Full-Stack",
+      "repo": "https://github.com/Prabesh1919/ai-autonomous-project-backend-structure"
+    },
+    {
+      "id": "inverter",
+      "title": "🔌 Inverter Review AI",
+      "subtitle": "LangGraph-Driven Manufacturer Compliance Inspector",
+      "description": "A document analysis pipeline parsing manufacturer specifications, mapping specifications to regulatory guidelines, and outputting compliance matrices.",
+      "achievements": [
+        "LangGraph DAG Core: Processes documents across extraction, unit-normalization (e.g. kW -> W), and comparative checks.",
+        "Structured Fact Extractor: Strict schema parsing via Pydantic using OpenAI/Anthropic fallback routes.",
+        "NEPQA Review Audit: Maps fact matrices to official national energy guidelines, highlighting discrepancies."
+      ],
+      "tech": [
+        "Python 3.11",
+        "LangGraph",
+        "FastAPI",
+        "Pydantic",
+        "OpenAI API",
+        "Anthropic SDK",
+        "ReportLab"
+      ],
+      "architecture": "[Datasheets PDF/TXT] -> [LangGraph DAG Extractor] -> [Unit Normalizer] -> [NEPQA Rules Validator] -> [Report Generator]",
+      "category": "AI & Quant",
+      "repo": "https://github.com/Prabesh1919/Ai_enginnering_assement"
+    },
+    {
+      "id": "hostel",
+      "title": "🏨 Symbol Hostel Administration Engine",
+      "subtitle": "Production MERN System with Cloudinary & Groq AI Chat",
+      "description": "A comprehensive accommodation booking, billing, and notice administration system built for high-throughput hostel management.",
+      "achievements": [
+        "Dynamic Content Framework: Room management, booking engines, notices, and billing structures managed dynamically.",
+        "Groq AI Enquiry Agent: Integrated Llama 3 chatbot resolving incoming student queries directly.",
+        "Secure Isolation: JWT verification modules coupled with brute-force API rate limiting schemes."
+      ],
+      "tech": [
+        "React.js",
+        "Vite",
+        "Node.js",
+        "Express.js",
+        "MongoDB Atlas",
+        "Zod",
+        "Cloudinary",
+        "Groq API"
+      ],
+      "architecture": "[Vite Client] <-> [Express + JWT Auth] <-> [Cloudinary / Groq AI] <-> [MongoDB Atlas Cache]",
+      "category": "Full-Stack",
+      "repo": "https://github.com/Prabesh1919/Symbol-Hostel"
+    },
+    {
+      "id": "jarvish",
+      "title": "🤖 JARVISH Voice Assistant",
+      "subtitle": "Gemini 2.5 Flash Powered Android Assistant",
+      "description": "A low-latency mobile voice assistant featuring an intricate futuristic HUD layout and robust background system automations.",
+      "achievements": [
+        "Cyber-Glass HUD: Complex dials, navigation rings, and neon sweeps built entirely with custom Jetpack Compose canvas styling.",
+        "Native Low-Latency Speech: Smooth Android STT -> Gemini context logic -> TTS loop executing voice commands.",
+        "Encrypted Security Vault: Access credentials locked down locally utilizing EncryptedSharedPreferences."
+      ],
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Material 3",
+        "Dagger Hilt",
+        "Gemini API",
+        "EncryptedSharedPreferences"
+      ],
+      "architecture": "[User Speech Input] -> [Android SpeechRecognizer] -> [Gemini API Client] -> [Android TTS Output]",
+      "category": "Mobile",
+      "repo": "https://github.com/Prabesh1919/jarvis"
+    },
+    {
+      "id": "hydratrack",
+      "title": "💧 HydraTrack Water Reminder",
+      "subtitle": "Offline-First Hydration App",
+      "description": "An offline-first Android hydration logger demonstrating MVVM practices, localized caching, and scheduled alarms.",
+      "achievements": [
+        "Offline Persistence: Robust Room DB layer caching logging records, streak progress counters, and goals.",
+        "Background Jobs: Hilt-linked WorkManager scheduler orchestrating background reminder notifications."
+      ],
+      "tech": [
+        "Kotlin",
+        "Jetpack Compose",
+        "MVVM / StateFlow",
+        "Room DB",
+        "Dagger Hilt",
+        "WorkManager"
+      ],
+      "architecture": "[Compose Views] -> [ViewModels / StateFlow] -> [Room DB Layer] -> [WorkManager Jobs]",
+      "category": "Mobile",
+      "repo": "https://github.com/Prabesh1919/day1"
+    }
+  ],
+  "techStack": [
+    {
+      "name": "Python",
+      "category": "Languages"
+    },
+    {
+      "name": "JavaScript",
+      "category": "Languages"
+    },
+    {
+      "name": "TypeScript",
+      "category": "Languages"
+    },
+    {
+      "name": "Kotlin",
+      "category": "Languages"
+    },
+    {
+      "name": "PHP",
+      "category": "Languages"
+    },
+    {
+      "name": "SQL",
+      "category": "Languages"
+    },
+    {
+      "name": "OpenAI",
+      "category": "AI & Agents"
+    },
+    {
+      "name": "Gemini API",
+      "category": "AI & Agents"
+    },
+    {
+      "name": "LangChain",
+      "category": "AI & Agents"
+    },
+    {
+      "name": "LangGraph",
+      "category": "AI & Agents"
+    },
+    {
+      "name": "LlamaIndex",
+      "category": "AI & Agents"
+    },
+    {
+      "name": "Pinecone",
+      "category": "Vector DBs & RAG"
+    },
+    {
+      "name": "ChromaDB",
+      "category": "Vector DBs & RAG"
+    },
+    {
+      "name": "pgvector",
+      "category": "Vector DBs & RAG"
+    },
+    {
+      "name": "Node.js",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "Express",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "Laravel",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "FastAPI",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "Docker",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "AWS",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "CI/CD",
+      "category": "Backend & Cloud"
+    },
+    {
+      "name": "MongoDB",
+      "category": "Databases & Cache"
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Databases & Cache"
+    },
+    {
+      "name": "MySQL",
+      "category": "Databases & Cache"
+    },
+    {
+      "name": "Redis",
+      "category": "Databases & Cache"
+    },
+    {
+      "name": "React",
+      "category": "Frontend UI"
+    },
+    {
+      "name": "Next.js",
+      "category": "Frontend UI"
+    },
+    {
+      "name": "Vite",
+      "category": "Frontend UI"
+    },
+    {
+      "name": "Tailwind CSS",
+      "category": "Frontend UI"
+    },
+    {
+      "name": "PyTest",
+      "category": "Testing & Ops"
+    },
+    {
+      "name": "Jest",
+      "category": "Testing & Ops"
+    },
+    {
+      "name": "Prometheus",
+      "category": "Testing & Ops"
+    },
+    {
+      "name": "OpenTelemetry",
+      "category": "Testing & Ops"
+    }
+  ],
+  "categories": [
+    "All",
+    "Languages",
+    "AI & Agents",
+    "Vector DBs & RAG",
+    "Backend & Cloud",
+    "Databases & Cache",
+    "Frontend UI",
+    "Testing & Ops"
+  ]
+}
