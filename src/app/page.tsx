@@ -267,6 +267,10 @@ export default function Home() {
   ];
 
   // ── Effects ────────────────────────────────────────────────────────────────
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", activeTheme);
+  }, [activeTheme]);
+
   useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages, isTyping, chatOpen]);
   useEffect(() => { cliEndRef.current?.scrollIntoView({ behavior: "smooth" }); }, [cliHistory, cliMode]);
 
@@ -290,15 +294,30 @@ export default function Home() {
   const filteredTech = activeCategory === "All" ? techStack : techStack.filter((t) => t.category === activeCategory);
 
   // ── Handlers ───────────────────────────────────────────────────────────────
-  const handleContactSubmit = (e: React.FormEvent) => {
+  const handleContactSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formName || !formEmail || !formMsg) return;
     setFormStatus("sending");
-    setTimeout(() => {
-      setFormStatus("success");
-      setFormName(""); setFormEmail(""); setFormMsg("");
-      setTimeout(() => setFormStatus("idle"), 5000);
-    }, 1500);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: formName, email: formEmail, message: formMsg }),
+      });
+      if (res.ok) {
+        setFormStatus("success");
+        setFormName(""); setFormEmail(""); setFormMsg("");
+        setTimeout(() => setFormStatus("idle"), 5000);
+      } else {
+        const errData = await res.json();
+        alert(errData.error || "Failed to transmit message. Please try again.");
+        setFormStatus("idle");
+      }
+    } catch (err) {
+      console.error("Failed to submit contact form:", err);
+      alert("Connection offline or server error. Please try again.");
+      setFormStatus("idle");
+    }
   };
 
   const handleChatSend = async (e: React.FormEvent) => {
@@ -329,13 +348,15 @@ export default function Home() {
 
   const handleClientEdit = (client: "A" | "B", text: string) => {
     if (client === "A") {
-      setClientATask((prev) => { const nextClock = { ...prev.clock, A: prev.clock.A + 1 }; return { ...prev, text, clock: nextClock, timestamp: Date.now() }; });
+      const nextClock = { ...clientATask.clock, A: clientATask.clock.A + 1 };
+      setClientATask((prev) => ({ ...prev, text, clock: nextClock, timestamp: Date.now() }));
       setSyncStatus("dirty");
-      setCrdtLog((prev) => [`[Client A mutated] Clock: A:${clientATask.clock.A + 1}, B:${clientATask.clock.B} | Text: "${text}"`, ...prev]);
+      setCrdtLog((prev) => [`[Client A mutated] Clock: A:${nextClock.A}, B:${nextClock.B} | Text: "${text}"`, ...prev]);
     } else {
-      setClientBTask((prev) => { const nextClock = { ...prev.clock, B: prev.clock.B + 1 }; return { ...prev, text, clock: nextClock, timestamp: Date.now() }; });
+      const nextClock = { ...clientBTask.clock, B: clientBTask.clock.B + 1 };
+      setClientBTask((prev) => ({ ...prev, text, clock: nextClock, timestamp: Date.now() }));
       setSyncStatus(clientATask.text !== text ? "conflict" : "dirty");
-      setCrdtLog((prev) => [`[Client B mutated] Clock: A:${clientBTask.clock.A}, B:${clientBTask.clock.B + 1} | Text: "${text}"`, ...prev]);
+      setCrdtLog((prev) => [`[Client B mutated] Clock: A:${nextClock.A}, B:${nextClock.B} | Text: "${text}"`, ...prev]);
     }
   };
 
@@ -688,7 +709,7 @@ export default function Home() {
               </h1>
 
               <div className="text-xl md:text-3xl text-slate-400 min-h-[44px] flex items-center justify-center gap-2" style={{ fontFamily: "var(--font-mono)", fontWeight: 300 }}>
-                <span>I build </span>
+                <span>I am {/^[aeiou]/i.test(titles[titleIndex] || "") ? "an" : "a"} </span>
                 <span className="relative">
                   <span style={{ color: t.primary, fontWeight: 500, textShadow: `0 0 20px ${t.primary}60` }}>
                     {currentText}
@@ -752,6 +773,20 @@ export default function Home() {
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Scroll Down Indicator */}
+            <div className="pt-8 animate-float">
+              <a
+                href="#about"
+                className="inline-flex flex-col items-center gap-2 text-slate-500 hover:text-white transition-colors"
+                style={{ fontFamily: "var(--font-mono)", fontSize: "10px", letterSpacing: "0.1em" }}
+              >
+                <span>SCROLL TO DISCOVER</span>
+                <span className="w-5 h-8 rounded-full border border-slate-800 flex items-start justify-center p-1">
+                  <span className="w-1 h-2 rounded-full animate-bounce" style={{ background: t.primary }} />
+                </span>
+              </a>
             </div>
           </section>
 
@@ -1113,16 +1148,16 @@ export default function Home() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Name</label>
-                        <input type="text" required value={formName} onChange={(e) => setFormName(e.target.value)} className="input-aurora" />
+                        <input type="text" required disabled={formStatus === "sending"} value={formName} onChange={(e) => setFormName(e.target.value)} className="input-aurora" />
                       </div>
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Email</label>
-                        <input type="email" required value={formEmail} onChange={(e) => setFormEmail(e.target.value)} className="input-aurora" />
+                        <input type="email" required disabled={formStatus === "sending"} value={formEmail} onChange={(e) => setFormEmail(e.target.value)} className="input-aurora" />
                       </div>
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Message</label>
-                      <textarea required rows={4} value={formMsg} onChange={(e) => setFormMsg(e.target.value)} className="input-aurora resize-none" />
+                      <textarea required disabled={formStatus === "sending"} rows={4} value={formMsg} onChange={(e) => setFormMsg(e.target.value)} className="input-aurora resize-none" />
                     </div>
                     <button
                       type="submit"
@@ -1399,10 +1434,10 @@ export default function Home() {
       )}
 
       {/* ── JARVISH AI CHATBOT ────────────────────────────────────────────── */}
-      <div className="fixed bottom-6 right-6 z-40" style={{ fontFamily: "var(--font-sans)" }}>
+      <div className="fixed bottom-6 right-4 sm:right-6 z-40" style={{ fontFamily: "var(--font-sans)" }}>
         {chatOpen ? (
           <div
-            className="rounded-2xl w-[92vw] sm:w-[380px] h-[500px] shadow-2xl flex flex-col overflow-hidden animate-fadeIn"
+            className="rounded-2xl w-[calc(100vw-2rem)] sm:w-[380px] h-[500px] shadow-2xl flex flex-col overflow-hidden animate-fadeIn"
             style={{
               background: "rgba(8,12,24,0.97)",
               border: `1px solid ${t.primary}25`,
@@ -1501,6 +1536,16 @@ export default function Home() {
           </button>
         )}
       </div>
+
+      {/* ── FOOTER ────────────────────────────────────────────────────────── */}
+      <footer className="w-full max-w-7xl mx-auto px-5 pt-16 mt-16 border-t border-white/5 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500" style={{ fontFamily: "var(--font-mono)" }}>
+        <div>
+          <span>© {new Date().getFullYear()} {portfolioData.personalInfo.name}. All rights reserved.</span>
+        </div>
+        <div className="flex gap-4">
+          <span className="text-[10px] text-slate-600">VOID AURORA ENGINE v2.5.0</span>
+        </div>
+      </footer>
 
     </main>
   );

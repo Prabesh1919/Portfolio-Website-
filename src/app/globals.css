@@ -62,13 +62,15 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-smooth:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --btn-shadow:    rgba(139, 92, 246, 0.35);
 }
 
 /* === Theme Variants === */
-[data-theme="aurora"]  { --primary: #8b5cf6; --secondary: #06b6d4; }
-[data-theme="plasma"]  { --primary: #ec4899; --secondary: #f59e0b; }
-[data-theme="matrix"]  { --primary: #10b981; --secondary: #06b6d4; }
-[data-theme="solar"]   { --primary: #f59e0b; --secondary: #ef4444; }
+[data-theme="aurora"]  { --primary: #8b5cf6; --secondary: #06b6d4; --btn-shadow: rgba(139, 92, 246, 0.35); }
+[data-theme="plasma"]  { --primary: #ec4899; --secondary: #f59e0b; --btn-shadow: rgba(236, 72, 153, 0.35); }
+[data-theme="matrix"]  { --primary: #10b981; --secondary: #06b6d4; --btn-shadow: rgba(16, 185, 129, 0.35); }
+[data-theme="solar"]   { --primary: #f59e0b; --secondary: #ef4444; --btn-shadow: rgba(245, 158, 11, 0.35); }
 
 /* ============================================================
    BASE RESET & TYPOGRAPHY
@@ -275,7 +277,7 @@ body::after {
    BUTTONS
    ============================================================ */
 
-@utility btn-aurora {
+@utility btn-theme {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -287,10 +289,10 @@ body::after {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #fff;
-  background: linear-gradient(135deg, var(--aurora-violet) 0%, var(--aurora-indigo) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 0.625rem;
-  box-shadow: 0 4px 15px rgba(139,92,246,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+  box-shadow: 0 4px 15px var(--btn-shadow), inset 0 1px 0 rgba(255,255,255,0.15);
   cursor: pointer;
   overflow: hidden;
   transition: all 0.3s var(--ease-out-expo);
@@ -304,11 +306,16 @@ body::after {
   }
   &:hover { 
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(139,92,246,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: 0 8px 25px var(--btn-shadow), inset 0 1px 0 rgba(255,255,255,0.2);
   }
   &:hover::after { opacity: 1; }
   &:active { transform: translateY(0px); }
 }
+
+@utility btn-aurora { @apply btn-theme; }
+@utility btn-plasma { @apply btn-theme; }
+@utility btn-matrix { @apply btn-theme; }
+@utility btn-solar { @apply btn-theme; }
 
 @utility btn-ghost {
   display: inline-flex;

@@ -13,10 +13,12 @@ import path from "path";
 // ─── Redis Keys ───────────────────────────────────────────────────────────────
 const PORTFOLIO_KEY = "portfolio:data";
 const CHATS_KEY = "chats:sessions";
+const CONTACTS_KEY = "contacts:messages";
 
 // ─── File Paths (local dev fallback) ──────────────────────────────────────────
 const PORTFOLIO_FILE = path.join(process.cwd(), "src/data/portfolio.json");
 const CHATS_FILE = path.join(process.cwd(), "src/data/chats.json");
+const CONTACTS_FILE = path.join(process.cwd(), "src/data/contacts.json");
 
 // ─── Redis Client (lazy-initialized) ──────────────────────────────────────────
 function getRedisClient(): Redis | null {
@@ -146,4 +148,49 @@ export async function clearChatSessions(): Promise<void> {
 
   // Local dev fallback
   await fs.writeFile(CHATS_FILE, "[]", "utf-8");
+}
+
+// ─── Contact Messages ─────────────────────────────────────────────────────────
+
+export async function getContactMessages(): Promise<any[]> {
+  const redis = getRedisClient();
+
+  if (redis) {
+    const data = await redis.get<any[]>(CONTACTS_KEY);
+    return data ?? [];
+  }
+
+  try {
+    const raw = await fs.readFile(CONTACTS_FILE, "utf-8");
+    return JSON.parse(raw);
+  } catch {
+    return [];
+  }
+}
+
+export async function addContactMessage(
+  name: string,
+  email: string,
+  message: string
+): Promise<void> {
+  const redis = getRedisClient();
+  const now = new Date().toISOString();
+  const newMessage = { name, email, message, timestamp: now };
+
+  if (redis) {
+    const messages: any[] = (await redis.get<any[]>(CONTACTS_KEY)) ?? [];
+    messages.push(newMessage);
+    await redis.set(CONTACTS_KEY, messages);
+    return;
+  }
+
+  let messages: any[] = [];
+  try {
+    const raw = await fs.readFile(CONTACTS_FILE, "utf-8");
+    messages = JSON.parse(raw);
+  } catch {
+    messages = [];
+  }
+  messages.push(newMessage);
+  await fs.writeFile(CONTACTS_FILE, JSON.stringify(messages, null, 2), "utf-8");
 }
