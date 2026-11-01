@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import defaultPortfolioData from "../data/portfolio.json";
 import {
   Terminal,
@@ -486,7 +487,7 @@ export default function Home() {
   //  RENDER
   // ═══════════════════════════════════════════════════════════════════════════
   return (
-    <main className="min-h-screen relative text-slate-100 pb-24 select-none overflow-x-hidden" style={{ fontFamily: "var(--font-sans)" }}>
+    <main id="main-content" className="min-h-screen relative text-slate-100 pb-24 select-none overflow-x-hidden" style={{ fontFamily: "var(--font-sans)" }}>
 
       {/* ── Ambient Aurora Orbs ───────────────────────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
@@ -537,8 +538,10 @@ export default function Home() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/avatar.jpg"
-                  alt="Prabesh Shah"
+                  src="/avatar.webp"
+                  alt="Prabesh Shah - Autonomous AI Engineer and Quantitative Systems Architect"
+                  width={36}
+                  height={36}
                   className="w-full h-full object-cover object-top"
                 />
               </div>
@@ -553,8 +556,8 @@ export default function Home() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {[["#about","About"],["#tech","Stack"],["#crdt-lab","Lab"],["#projects","Projects"],["#contact","Contact"]].map(([href,label]) => (
+          <nav aria-label="Primary Navigation" className="hidden md:flex items-center gap-1">
+            {[["#about","About"],["#tech","Stack"],["#crdt-lab","Lab"],["#projects","Projects"],["#faq","FAQ"],["#contact","Contact"]].map(([href,label]) => (
               <a
                 key={href}
                 href={href}
@@ -610,13 +613,13 @@ export default function Home() {
 
         {/* Mobile Nav */}
         {mobileNavOpen && (
-          <div className="md:hidden border-t border-white/5 px-5 py-4 space-y-1 bg-slate-950/95">
-            {[["#about","About"],["#tech","Stack"],["#crdt-lab","Lab"],["#projects","Projects"],["#contact","Contact"]].map(([href,label]) => (
+          <nav aria-label="Mobile Navigation" className="md:hidden border-t border-white/5 px-5 py-4 space-y-1 bg-slate-950/95">
+            {[["#about","About"],["#tech","Stack"],["#crdt-lab","Lab"],["#projects","Projects"],["#faq","FAQ"],["#contact","Contact"]].map(([href,label]) => (
               <a key={href} href={href} onClick={() => setMobileNavOpen(false)} className="block px-4 py-2.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-white/4 transition-all" style={{ fontFamily: "var(--font-mono)" }}>
                 {label}
               </a>
             ))}
-          </div>
+          </nav>
         )}
       </header>
 
@@ -653,8 +656,12 @@ export default function Home() {
             <form onSubmit={handleCLISubmit} className="bg-slate-950 border-t border-white/5 px-5 py-3.5 flex items-center gap-3">
               <span style={{ color: t.primary, fontFamily: "var(--font-mono)" }}>❯</span>
               <span className="text-slate-500" style={{ fontFamily: "var(--font-mono)" }}>~</span>
+              <label htmlFor="cli-terminal-input" className="sr-only">Interactive Terminal Command Line</label>
               <input
+                id="cli-terminal-input"
+                name="cliCommand"
                 type="text"
+                aria-label="Interactive Terminal Command Line"
                 value={cliInput}
                 onChange={(e) => setCliInput(e.target.value)}
                 placeholder="type 'help' to explore commands..."
@@ -693,7 +700,7 @@ export default function Home() {
 
             {/* Main headline */}
             <div className="space-y-5">
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-none">
+              <h1 id="author-h1" className="text-6xl md:text-8xl font-bold tracking-tight leading-none">
                 <span
                   className="inline-block"
                   style={{
@@ -708,6 +715,10 @@ export default function Home() {
                 </span>
               </h1>
 
+              <div className="sr-only" id="hero-bio">
+                Prabesh Shah is an AI Engineer and Quantitative Systems Architect based in Nepal, specializing in autonomous multi-agent networks, algorithmic trading systems, and high-throughput distributed backends.
+              </div>
+
               <div className="text-xl md:text-3xl text-slate-400 min-h-[44px] flex items-center justify-center gap-2" style={{ fontFamily: "var(--font-mono)", fontWeight: 300 }}>
                 <span>I am {/^[aeiou]/i.test(titles[titleIndex] || "") ? "an" : "a"} </span>
                 <span className="relative">
@@ -720,7 +731,7 @@ export default function Home() {
             </div>
 
             {/* Bio */}
-            <p className="max-w-2xl text-slate-400 leading-relaxed text-base md:text-lg font-light">
+            <p id="agent-answer-summary" className="max-w-2xl text-slate-400 leading-relaxed text-base md:text-lg font-light">
               {portfolioData.personalInfo.bio}
             </p>
 
@@ -807,8 +818,11 @@ export default function Home() {
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/avatar.jpg"
-                      alt="Prabesh Shah"
+                      src="/avatar.webp"
+                      alt="Prabesh Shah - Autonomous AI Engineer & Full-Stack Architect"
+                      width={96}
+                      height={96}
+                      loading="lazy"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
@@ -820,7 +834,7 @@ export default function Home() {
                   <p className="text-xs font-medium mb-2" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>
                     01 — ENGINEERING FOCUS
                   </p>
-                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Core Specializations</h2>
+                  <h2 id="core-specializations-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Core Specializations</h2>
                 </div>
               </div>
               <p className="max-w-md text-slate-400 text-sm leading-relaxed md:text-right">
@@ -891,7 +905,7 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
                 <p className="text-xs font-medium mb-2" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>02 — TECHNICAL ARSENAL</p>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">The Tech Stack</h2>
+                <h2 id="tech-stack-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">The Tech Stack</h2>
               </div>
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat) => (
@@ -942,7 +956,7 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
                 <p className="text-xs font-medium mb-2" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>03 — DISTRIBUTED LAB</p>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">🔬 Live CRDT Simulator</h2>
+                <h2 id="crdt-simulator-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">🔬 Live CRDT Simulator</h2>
               </div>
               <p className="max-w-md text-slate-400 text-sm leading-relaxed md:text-right">
                 Interactive Vector Clock semantic resolution. Mutate task parameters and watch LWW conflict resolution fire in real-time.
@@ -962,9 +976,12 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Mutate Task Content</label>
+                  <label htmlFor="client-a-input" className="text-[10px] text-slate-500 uppercase tracking-wider block" style={{ fontFamily: "var(--font-mono)" }}>Mutate Task Content</label>
                   <input
+                    id="client-a-input"
+                    name="clientAText"
                     type="text"
+                    aria-label="Mutate Client Alpha Task Content"
                     value={clientATask.text}
                     onChange={(e) => handleClientEdit("A", e.target.value)}
                     className="input-aurora"
@@ -1042,9 +1059,12 @@ export default function Home() {
                   </span>
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Mutate Task Content</label>
+                  <label htmlFor="client-b-input" className="text-[10px] text-slate-500 uppercase tracking-wider block" style={{ fontFamily: "var(--font-mono)" }}>Mutate Task Content</label>
                   <input
+                    id="client-b-input"
+                    name="clientBText"
                     type="text"
+                    aria-label="Mutate Client Beta Task Content"
                     value={clientBTask.text}
                     onChange={(e) => handleClientEdit("B", e.target.value)}
                     className="input-aurora"
@@ -1063,7 +1083,7 @@ export default function Home() {
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
                 <p className="text-xs font-medium mb-2" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>04 — ARCHITECTURAL SHOWCASES</p>
-                <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Production Codebases</h2>
+                <h2 id="production-codebases-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Production Codebases</h2>
               </div>
               <p className="max-w-md text-slate-400 text-sm leading-relaxed md:text-right">
                 High-fidelity projects demonstrating my preferences across AI pipelines, stateful server infra, and mobile apps.
@@ -1095,9 +1115,19 @@ export default function Home() {
                       >
                         {p.category}
                       </span>
-                      <div className="flex items-center gap-1 text-slate-600 group-hover:text-slate-400 transition-colors">
-                        <span className="text-[10px]" style={{ fontFamily: "var(--font-mono)" }}>VIEW</span>
-                        <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      <div className="flex items-center gap-2">
+                        <Link
+                          href={`/projects/${p.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          title={`Dedicated case study for ${p.title}`}
+                          className="text-[10px] px-2 py-0.5 rounded border border-white/10 hover:border-emerald-500/40 text-slate-400 hover:text-emerald-400 font-mono transition-colors"
+                        >
+                          CASE STUDY
+                        </Link>
+                        <div className="flex items-center gap-1 text-slate-600 group-hover:text-slate-400 transition-colors">
+                          <span className="text-[10px]" style={{ fontFamily: "var(--font-mono)" }}>VIEW</span>
+                          <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                        </div>
                       </div>
                     </div>
 
@@ -1123,12 +1153,173 @@ export default function Home() {
           </section>
 
           {/* ══════════════════════════════════════════════════════════════
+              TECHNICAL KNOWLEDGE BASE & FAQ (AEO / GEO / ENTITY SCHEMA)
+          ══════════════════════════════════════════════════════════════ */}
+          <section id="faq" className="scroll-mt-24 space-y-8 max-w-4xl mx-auto">
+            <div className="text-center space-y-3">
+              <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>05 — ARCHITECTURAL KNOWLEDGE BASE</p>
+              <h2 id="faq-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Frequently Addressed Inquiries</h2>
+              <p className="text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
+                Direct architectural definitions and system specifications for AI answer engines, research crawlers, and technical teams.
+              </p>
+            </div>
+
+            {/* Semantic Definition List for Answer Engines */}
+            <dl className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="aurora-card p-6 space-y-2.5">
+                <dt className="text-base font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+                  What autonomous AI architectures does Prabesh Shah specialize in?
+                </dt>
+                <dd className="text-sm text-slate-400 leading-relaxed">
+                  Prabesh Shah specializes in orchestrating stateful multi-agent networks using LangGraph, hybrid vector retrieval, and self-reflection loops. These architectures decompose complex tasks across specialized autonomous sub-agents coordinated by deterministic supervisory layers for zero-loss execution.
+                </dd>
+              </div>
+
+              <div className="aurora-card p-6 space-y-2.5">
+                <dt className="text-base font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-purple-400 inline-block" />
+                  How does the Elite NEPSE AI Trading Agent operate?
+                </dt>
+                <dd className="text-sm text-slate-400 leading-relaxed">
+                  The Elite NEPSE AI Trading Agent is an institutional-grade quantitative trading platform for the Nepal Stock Exchange. It ingests live market floorsheets, classifies volatility regimes, mitigates concept drift with Page-Hinkley cumulative sum monitors, and sizes capital through fractional Kelly criteria.
+                </dd>
+              </div>
+
+              <div className="aurora-card p-6 space-y-2.5">
+                <dt className="text-base font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-cyan-400 inline-block" />
+                  What is a Conflict-Free Replicated Data Type (CRDT) in this showcase?
+                </dt>
+                <dd className="text-sm text-slate-400 leading-relaxed">
+                  A Conflict-Free Replicated Data Type (CRDT) is a distributed data structure that synchronizes across independent nodes without central consensus locks. It guarantees strong eventual consistency using vector clocks and deterministic state-based merge functions.
+                </dd>
+              </div>
+
+              <div className="aurora-card p-6 space-y-2.5">
+                <dt className="text-base font-semibold text-white flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />
+                  What is the primary tech stack and engineering philosophy?
+                </dt>
+                <dd className="text-sm text-slate-400 leading-relaxed">
+                  The primary tech stack spans Next.js (App Router), TypeScript, Python (FastAPI), Redis, PostgreSQL, and Kotlin. Engineering emphasizes local-first durability, sub-millisecond retrieval, strict type boundaries, and resilient fault isolation across distributed backends.
+                </dd>
+              </div>
+            </dl>
+
+            {/* Step-by-Step Snippet Targeting */}
+            <div className="aurora-card p-6 space-y-4">
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-cyan-400" />
+                How the Autonomous Multi-Agent Pipeline Operates
+              </h3>
+              <ol className="space-y-3 list-decimal list-inside text-sm text-slate-300">
+                <li className="leading-relaxed">
+                  <strong className="text-white">Perception & Ingestion:</strong> Continuous streaming telemetry and floorsheet data ingestion normalized via Redis Pub/Sub buffers.
+                </li>
+                <li className="leading-relaxed">
+                  <strong className="text-white">Regime Classification & Concept Drift:</strong> Unsupervised regime-switching models detect volatility shifts and freeze allocations under Page-Hinkley drift thresholds.
+                </li>
+                <li className="leading-relaxed">
+                  <strong className="text-white">Deterministic Execution & Risk Sizing:</strong> Fractional Kelly criterion optimizes order sizing, routed through headless broker connectors with automated session renewal.
+                </li>
+              </ol>
+            </div>
+
+            {/* Comparative Benchmarks for Structured Snippets */}
+            <div className="aurora-card p-6 space-y-4 overflow-x-auto">
+              <h3 className="text-lg font-semibold text-white">System Architecture Comparison & Benchmarks</h3>
+              <table className="w-full text-left text-xs border-collapse">
+                <thead>
+                  <tr className="border-b border-white/10 text-slate-400 font-mono">
+                    <th className="py-2.5 pr-4">Architecture Metric</th>
+                    <th className="py-2.5 px-4 text-emerald-400">Autonomous Multi-Agent</th>
+                    <th className="py-2.5 px-4 text-slate-400">Sequential Monolith</th>
+                    <th className="py-2.5 pl-4 text-slate-400">Manual Operations</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5 font-mono text-slate-300">
+                  <tr>
+                    <td className="py-2.5 pr-4 font-medium text-white">State Synchronization</td>
+                    <td className="py-2.5 px-4 text-emerald-300">CRDT Vector Clocks</td>
+                    <td className="py-2.5 px-4 text-slate-400">Pessimistic DB Locks</td>
+                    <td className="py-2.5 pl-4 text-slate-500">Manual Reconciliation</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2.5 pr-4 font-medium text-white">Execution Latency</td>
+                    <td className="py-2.5 px-4 text-emerald-300">&lt; 14ms (Async Worker)</td>
+                    <td className="py-2.5 px-4 text-slate-400">320ms (Blocking)</td>
+                    <td className="py-2.5 pl-4 text-slate-500">&gt; 5,000ms</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2.5 pr-4 font-medium text-white">Concept Drift Protection</td>
+                    <td className="py-2.5 px-4 text-emerald-300">Page-Hinkley Monitor</td>
+                    <td className="py-2.5 px-4 text-slate-400">Periodic Cron Retrain</td>
+                    <td className="py-2.5 pl-4 text-slate-500">None / Reactive</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2.5 pr-4 font-medium text-white">Fault Domain Isolation</td>
+                    <td className="py-2.5 px-4 text-emerald-300">Autonomous Sub-Agent</td>
+                    <td className="py-2.5 px-4 text-slate-400">Shared Process Crash</td>
+                    <td className="py-2.5 pl-4 text-slate-500">Single Point Failure</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* Embedded FAQPage Schema */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: [
+                    {
+                      "@type": "Question",
+                      name: "What autonomous AI architectures does Prabesh Shah specialize in?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "Prabesh Shah specializes in orchestrating stateful multi-agent networks using LangGraph, hybrid vector retrieval, and self-reflection loops. These architectures decompose complex tasks across specialized autonomous sub-agents coordinated by deterministic supervisory layers for zero-loss execution.",
+                      },
+                    },
+                    {
+                      "@type": "Question",
+                      name: "How does the Elite NEPSE AI Trading Agent operate?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The Elite NEPSE AI Trading Agent is an institutional-grade quantitative trading platform for the Nepal Stock Exchange. It ingests live market floorsheets, classifies volatility regimes, mitigates concept drift with Page-Hinkley cumulative sum monitors, and sizes capital through fractional Kelly criteria.",
+                      },
+                    },
+                    {
+                      "@type": "Question",
+                      name: "What is a Conflict-Free Replicated Data Type (CRDT) in this showcase?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "A Conflict-Free Replicated Data Type (CRDT) is a distributed data structure that synchronizes across independent nodes without central consensus locks. It guarantees strong eventual consistency using vector clocks and deterministic state-based merge functions.",
+                      },
+                    },
+                    {
+                      "@type": "Question",
+                      name: "What is the primary tech stack and engineering philosophy?",
+                      acceptedAnswer: {
+                        "@type": "Answer",
+                        text: "The primary tech stack spans Next.js (App Router), TypeScript, Python (FastAPI), Redis, PostgreSQL, and Kotlin. Engineering emphasizes local-first durability, sub-millisecond retrieval, strict type boundaries, and resilient fault isolation across distributed backends.",
+                      },
+                    },
+                  ],
+                }),
+              }}
+            />
+          </section>
+
+          {/* ══════════════════════════════════════════════════════════════
               CONTACT
           ══════════════════════════════════════════════════════════════ */}
           <section id="contact" className="scroll-mt-24 space-y-10 max-w-4xl mx-auto">
             <div className="text-center space-y-3">
-              <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>05 — LET'S CONNECT</p>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white">Start a Conversation</h2>
+              <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>06 — LET&apos;S CONNECT</p>
+              <h2 id="contact-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Start a Conversation</h2>
               <p className="text-slate-400 text-sm max-w-md mx-auto leading-relaxed">Open to AI/ML collaborations, engineering contracts, and high-signal opportunities.</p>
             </div>
 
@@ -1141,23 +1332,95 @@ export default function Home() {
                       <CheckCircle className="w-7 h-7 text-emerald-400" />
                     </div>
                     <h3 className="text-lg font-semibold text-white">Message Transmitted</h3>
-                    <p className="text-slate-400 text-sm">Connection handshake acknowledged. I'll respond shortly.</p>
+                    <p className="text-slate-400 text-sm">Connection handshake acknowledged. I&apos;ll respond shortly.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleContactSubmit} className="space-y-5">
+                  <form
+                    id="contact-form"
+                    name="contact-inquiry"
+                    onSubmit={handleContactSubmit}
+                    className="space-y-5"
+                    aria-label="Direct architectural collaboration inquiry form"
+                    {...{
+                      toolname: "submitContactInquiry",
+                      tooldescription: "Sends a direct architectural collaboration or project inquiry to Prabesh Shah",
+                    }}
+                  >
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Name</label>
-                        <input type="text" required disabled={formStatus === "sending"} value={formName} onChange={(e) => setFormName(e.target.value)} className="input-aurora" />
+                        <label
+                          htmlFor="contact-name"
+                          className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block"
+                          style={{ fontFamily: "var(--font-mono)" }}
+                        >
+                          Your Name
+                        </label>
+                        <input
+                          id="contact-name"
+                          name="senderName"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          disabled={formStatus === "sending"}
+                          value={formName}
+                          onChange={(e) => setFormName(e.target.value)}
+                          placeholder="Dr. Alan Turing"
+                          className="input-aurora"
+                          aria-required="true"
+                          {...{
+                            toolparamdescription: "Full name of the inquiring party",
+                          }}
+                        />
                       </div>
                       <div className="space-y-1.5">
-                        <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Email</label>
-                        <input type="email" required disabled={formStatus === "sending"} value={formEmail} onChange={(e) => setFormEmail(e.target.value)} className="input-aurora" />
+                        <label
+                          htmlFor="contact-email"
+                          className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block"
+                          style={{ fontFamily: "var(--font-mono)" }}
+                        >
+                          Your Email
+                        </label>
+                        <input
+                          id="contact-email"
+                          name="senderEmail"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          disabled={formStatus === "sending"}
+                          value={formEmail}
+                          onChange={(e) => setFormEmail(e.target.value)}
+                          placeholder="alan@turing.org"
+                          className="input-aurora"
+                          aria-required="true"
+                          {...{
+                            toolparamdescription: "Verified email address for reply handshake",
+                          }}
+                        />
                       </div>
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-medium text-slate-500 uppercase tracking-wider" style={{ fontFamily: "var(--font-mono)" }}>Your Message</label>
-                      <textarea required disabled={formStatus === "sending"} rows={4} value={formMsg} onChange={(e) => setFormMsg(e.target.value)} className="input-aurora resize-none" />
+                      <label
+                        htmlFor="contact-message"
+                        className="text-[10px] font-medium text-slate-500 uppercase tracking-wider block"
+                        style={{ fontFamily: "var(--font-mono)" }}
+                      >
+                        Your Message
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        name="inquiryMessage"
+                        required
+                        disabled={formStatus === "sending"}
+                        rows={4}
+                        value={formMsg}
+                        onChange={(e) => setFormMsg(e.target.value)}
+                        placeholder="Inquiry regarding multi-agent orchestration, quant modeling, or systems consulting..."
+                        className="input-aurora resize-none"
+                        aria-required="true"
+                        {...{
+                          toolparamdescription: "Technical project brief or collaboration proposal",
+                        }}
+                      />
                     </div>
                     <button
                       type="submit"
@@ -1405,7 +1668,16 @@ export default function Home() {
             </div>
 
             {/* Footer */}
-            <div className="p-7 border-t border-white/5 bg-white/1 flex items-center justify-between rounded-b-3xl">
+            <div className="p-7 border-t border-white/5 bg-white/1 flex flex-wrap items-center justify-between gap-4 rounded-b-3xl">
+              <div className="flex items-center gap-3">
+                <Link
+                  href={`/projects/${selectedProject.id}`}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-medium text-slate-200 border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                >
+                  <ExternalLink className="w-3.5 h-3.5 text-emerald-400" /> Full Case Study
+                </Link>
+              </div>
               <a
                 href={selectedProject.repo}
                 target="_blank"
@@ -1496,8 +1768,12 @@ export default function Home() {
 
             {/* Input */}
             <form onSubmit={handleChatSend} className="p-3.5 border-t border-white/5 flex gap-2.5" style={{ background: "rgba(8,12,24,0.9)" }}>
+              <label htmlFor="chat-query-input" className="sr-only">Ask JARVISH AI Assistant</label>
               <input
+                id="chat-query-input"
+                name="chatQuery"
                 type="text"
+                aria-label="Ask JARVISH AI Assistant"
                 value={chatInput}
                 onChange={(e) => setChatInput(e.target.value)}
                 placeholder="Ask about projects, stack, quant..."
@@ -1538,11 +1814,28 @@ export default function Home() {
       </div>
 
       {/* ── FOOTER ────────────────────────────────────────────────────────── */}
-      <footer className="w-full max-w-7xl mx-auto px-5 pt-16 mt-16 border-t border-white/5 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500" style={{ fontFamily: "var(--font-mono)" }}>
-        <div>
+      <footer className="w-full max-w-7xl mx-auto px-5 pt-16 mt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500" style={{ fontFamily: "var(--font-mono)" }}>
+        <div className="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
           <span>© {new Date().getFullYear()} {portfolioData.personalInfo.name}. All rights reserved.</span>
+          <span className="hidden sm:inline text-slate-700">|</span>
+          <time dateTime="2026-11-01" className="text-slate-400">Updated November 2026</time>
+          <span className="hidden sm:inline text-slate-700">|</span>
+          <span className="text-emerald-400">Kathmandu, Nepal</span>
         </div>
-        <div className="flex gap-4">
+
+        {/* Semantic Internal Navigation & Authority Links */}
+        <nav aria-label="Footer Quick Links" className="flex flex-wrap justify-center gap-4 text-slate-400">
+          <a href="#about" className="hover:text-white transition-colors">About</a>
+          <a href="#tech" className="hover:text-white transition-colors">Stack</a>
+          <a href="#crdt-lab" className="hover:text-white transition-colors">Lab</a>
+          <a href="#projects" className="hover:text-white transition-colors">Projects</a>
+          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          <Link href="/privacy" className="hover:text-white transition-colors">Terms &amp; Privacy</Link>
+          <a href="https://github.com/Prabesh1919" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+        </nav>
+
+        <div className="flex items-center gap-3">
           <span className="text-[10px] text-slate-600">VOID AURORA ENGINE v2.5.0</span>
         </div>
       </footer>

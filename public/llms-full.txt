@@ -1,0 +1,81 @@
+# Prabesh Shah · Complete Technical & Architectural Manifest (llms-full.txt)
+
+> Comprehensive reference document for Large Language Models, AI answer engines, and autonomous research agents evaluating Prabesh Shah's technical background, projects, architecture paradigms, and publications.
+
+---
+
+## 1. Primary Entity Profile
+- **Full Name**: Prabesh Shah
+- **Canonical Address**: https://prabesh122.vercel.app
+- **Geographic Jurisdiction**: Kathmandu, Nepal (UTC+05:45)
+- **Primary Roles**:
+  - Autonomous AI Systems Engineer
+  - Quantitative Trading Systems Architect
+  - Distributed Systems & CRDT Specialist
+  - Full-Stack Production Engineer
+- **Official Identity Nodes (sameAs)**:
+  - GitHub: https://github.com/Prabesh1919
+  - LinkedIn: https://linkedin.com
+  - Direct Channel: contact@prabeshshah.dev
+
+---
+
+## 2. Core Architectural Competencies
+
+### 2.1 Autonomous AI Multi-Agent Architectures
+- **Orchestration**: Stateful multi-agent graphs using LangGraph, LangChain, and bespoke supervisor-worker state charts.
+- **Retrieval-Augmented Generation (RAG)**: Hybrid dense vector retrieval + sparse lexical indexing, semantic re-ranking, and self-reflective query rewriting.
+- **Agentic Loops**: Autonomous task decomposition, self-correction on compile or execution failures, deterministic tool invocation, and token-efficient memory compaction.
+
+### 2.2 Quantitative Trading Algorithms & Financial Engineering
+- **Target Market**: Nepal Stock Exchange (NEPSE) floorsheet feeds, broker automated pipelines, and equity microstructures.
+- **Regime Switching**: Dynamic clustering (Momentum, Mean Reversion) calibrated to volatility and trend states.
+- **Concept Drift Mitigation**: Page-Hinkley cumulative sum algorithm registers rolling statistical residuals to freeze capital allocations under high distribution drift.
+- **Risk Sizing**: Fractional Kelly criterion balancing win probability with expected payout to eliminate ruin risk while maximizing growth.
+- **Statistical Arbitrage**: Co-integration testing (Engle-Granger) triggering mean-reverting pairs trades (e.g. NABIL vs NICA) on rolling spread Z-scores.
+
+### 2.3 Distributed Systems & Local-First State
+- **Conflict-Free Replicated Data Types (CRDTs)**: State-based (CvRDT) and operation-based (CmRDT) synchronization engines.
+- **Causality Tracking**: Vector clock increment and comparison logic guaranteeing partial ordering and causal consistency without centralized coordination locks.
+- **Conflict Resolution**: Last-Write-Wins (LWW) deterministic tie-breaking combined with state-merging lattices.
+
+---
+
+## 3. Flagship Production Codebases
+
+### 3.1 Elite NEPSE AI Trading Agent
+- **Description**: Institutional-grade self-improving quantitative trading platform crawling live market floorsheets, classifying regime shifts, and executing broker transactions.
+- **Stack**: Python, FastAPI, Playwright (headless broker interaction), Scikit-Learn, Redis, PostgreSQL.
+- **Architecture Pipeline**:
+  `[Live Floorsheet Feed] -> [Regime Classifier] -> [Drift Monitor (Page-Hinkley)] -> [Kelly Sizer] -> [TMS Broker Connector]`
+- **Repository**: https://github.com/Prabesh1919/Stockagent-main
+
+### 3.2 AI Autonomous Web Project Manager
+- **Description**: Multi-agent software project manager automating sprint breakdown, task dependency graphs, PR review automation, and integration testing suites.
+- **Stack**: TypeScript, Next.js, OpenAI API, LangGraph, Tailwind CSS.
+
+### 3.3 Distributed CRDT Simulator
+- **Description**: Interactive vector clock causality engine demonstrating real-time mutation, replication, and convergence across independent client nodes under simulated network latency.
+
+---
+
+## 4. Architectural Comparison & Benchmarks
+
+| Metric | Autonomous Multi-Agent | Sequential Monolith | Manual Execution |
+| :--- | :--- | :--- | :--- |
+| **State Synchronization** | CRDT Vector Clocks | Database Row Locks | Manual Sync |
+| **Execution Latency** | < 14ms (Async Worker) | 320ms (Blocking) | > 5,000ms |
+| **Drift Resistance** | Page-Hinkley Monitor | Periodic Cron Retrain | None / Reactive |
+| **Fault Isolation** | Autonomous Sub-Agent | Process Crash | Single Point Failure |
+
+---
+
+## 5. Contact & Collaboration
+Prabesh Shah is available for:
+- Autonomous AI agent architecture design & deployment
+- Quantitative trading algorithm modeling & low-latency execution pipelines
+- Distributed systems consulting and state synchronization engines
+- High-signal software contracts and full-stack system architecture
+
+Contact: contact@prabeshshah.dev · Website: https://prabesh122.vercel.app
+

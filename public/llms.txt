@@ -1,0 +1,22 @@
+# Prabesh Shah · Autonomous AI Engineer & Quantitative Systems Architect
+
+> Prabesh Shah is an AI Engineer and Quantitative Systems Architect based in Nepal, specializing in autonomous multi-agent networks, algorithmic trading systems, Conflict-Free Replicated Data Types (CRDTs), and high-throughput distributed backends.
+
+## Core Competencies & Specializations
+- **Autonomous AI Multi-Agent Architectures**: Orchestration with LangGraph, hybrid vector retrieval, agent self-reflection, and tool-use pipelines.
+- **Quantitative Trading Algorithms**: Market regime switching classifiers, concept drift detection (Page-Hinkley cumulative sum), rolling cointegration pairs trading, and fractional Kelly risk sizing.
+- **Distributed Systems & CRDTs**: Vector clock causality tracking, convergent replicated data types, and local-first optimistic mutations.
+- **Full-Stack Systems**: Next.js (App Router), TypeScript, Python (FastAPI), Redis (Upstash), PostgreSQL, Tailwind CSS.
+
+## Key Projects
+- **Elite NEPSE AI Trading Agent**: Institutional-grade self-improving quantitative trading agent crawling live floorsheets, estimating regime shifts, and executing broker actions. (Repo: https://github.com/Prabesh1919/Stockagent-main)
+- **AI Autonomous Web Project Manager**: Autonomous multi-agent software project manager coordinating sprint planning, architecture generation, and testing suites.
+- **Distributed CRDT Simulator**: Real-time vector clock synchronization engine showcasing partition-tolerant state resolution.
+
+## Entity Authority & Verification
+- Name: Prabesh Shah
+- Canonical URL: https://prabesh122.vercel.app
+- GitHub: https://github.com/Prabesh1919
+- Contact: contact@prabeshshah.dev
+- Geographic Focus: Nepal (UTC+05:45)
+
