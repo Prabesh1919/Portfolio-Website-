@@ -678,6 +678,26 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-20 md:space-y-36 z-10 relative">
 
           {/* ══════════════════════════════════════════════════════════════
+              BREADCRUMB — homepage breadcrumb for LLM/agent context
+          ══════════════════════════════════════════════════════════════ */}
+          <nav aria-label="Breadcrumb" className="w-full max-w-7xl mx-auto px-5 pt-6 pb-0">
+            <ol className="flex items-center gap-1.5 text-xs text-slate-500" style={{ fontFamily: "var(--font-mono)" }}>
+              <li><Link href="/" className="hover:text-slate-300 transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="text-slate-700">/</li>
+              <li className="text-slate-400" aria-current="page">Portfolio</li>
+            </ol>
+          </nav>
+          {/* BreadcrumbList JSON-LD */}
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://prabesh122.vercel.app/" },
+              { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://prabesh122.vercel.app/#projects" }
+            ]
+          })}} />
+
+          {/* ══════════════════════════════════════════════════════════════
               HERO
           ══════════════════════════════════════════════════════════════ */}
           <section className="pt-20 md:pt-28 flex flex-col items-center text-center space-y-8 min-h-[88vh] justify-center">
@@ -1177,7 +1197,7 @@ export default function Home() {
                   What autonomous AI architectures does Prabesh Shah specialize in?
                 </dt>
                 <dd className="text-sm text-slate-400 leading-relaxed">
-                  Prabesh Shah specializes in orchestrating stateful multi-agent networks using LangGraph, hybrid vector retrieval, and self-reflection loops. These architectures decompose complex tasks across specialized autonomous sub-agents coordinated by deterministic supervisory layers for zero-loss execution.
+                  Prabesh Shah specializes in orchestrating stateful multi-agent networks using <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 underline underline-offset-2">LangGraph</a>, hybrid vector retrieval, and self-reflection loops. These architectures decompose complex tasks across specialized autonomous sub-agents coordinated by deterministic supervisory layers for zero-loss execution.
                 </dd>
               </div>
 
@@ -1197,7 +1217,7 @@ export default function Home() {
                   What is a Conflict-Free Replicated Data Type (CRDT) in this showcase?
                 </dt>
                 <dd className="text-sm text-slate-400 leading-relaxed">
-                  A Conflict-Free Replicated Data Type (CRDT) is a distributed data structure that synchronizes across independent nodes without central consensus locks. It guarantees strong eventual consistency using vector clocks and deterministic state-based merge functions.
+                  A Conflict-Free Replicated Data Type (<a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2">CRDT</a>) is a distributed data structure that synchronizes across independent nodes without central consensus locks. It guarantees strong eventual consistency using vector clocks and deterministic state-based merge functions.
                 </dd>
               </div>
 
@@ -1207,7 +1227,7 @@ export default function Home() {
                   What is the primary tech stack and engineering philosophy?
                 </dt>
                 <dd className="text-sm text-slate-400 leading-relaxed">
-                  The primary tech stack spans Next.js (App Router), TypeScript, Python (FastAPI), Redis, PostgreSQL, and Kotlin. Engineering emphasizes local-first durability, sub-millisecond retrieval, strict type boundaries, and resilient fault isolation across distributed backends.
+                  The primary tech stack spans <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-white hover:text-slate-300 underline underline-offset-2">Next.js</a> (App Router), TypeScript, Python (FastAPI), Redis, PostgreSQL, and Kotlin. Engineering emphasizes local-first durability, sub-millisecond retrieval, strict type boundaries, and resilient fault isolation across distributed backends.
                 </dd>
               </div>
             </dl>
@@ -1837,7 +1857,11 @@ export default function Home() {
           <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           <Link href="/privacy" className="hover:text-white transition-colors">Terms &amp; Privacy</Link>
+          <Link href="/projects/stockagent" className="hover:text-white transition-colors">NEPSE AI</Link>
+          <Link href="/projects/jarvish" className="hover:text-white transition-colors">Jarvis Agent</Link>
           <a href="https://github.com/Prabesh1919" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+          <a href="https://linkedin.com/in/prabesh-shah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+          <a href="https://schema.org/Person" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors sr-only">Schema.org</a>
         </nav>
 
         <div className="flex items-center gap-3">
