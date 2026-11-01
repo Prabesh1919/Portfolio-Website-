@@ -95,6 +95,7 @@ const jsonLd = {
       "@type": "Person",
       "@id": `${siteUrl}/#person`,
       name: "Prabesh Shah",
+      alternateName: ["Prabes Shah", "Prabash Shah", "Prebesh Shah", "Pravesh Shah", "Prabesh Sha"],
       givenName: "Prabesh",
       familyName: "Shah",
       jobTitle: "Autonomous AI Engineer & Quantitative Systems Architect",
