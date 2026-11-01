@@ -125,6 +125,10 @@ def generate_commits(total_commits=1000, start_date_str="2026-09-01", end_date_s
             msg = random.choice(SEMANTIC_MESSAGES)
 
             env = os.environ.copy()
+            env["GIT_AUTHOR_NAME"] = "Prabesh1919"
+            env["GIT_AUTHOR_EMAIL"] = "prabesh.shah.dev@gmail.com"
+            env["GIT_COMMITTER_NAME"] = "Prabesh1919"
+            env["GIT_COMMITTER_EMAIL"] = "prabesh.shah.dev@gmail.com"
             env["GIT_AUTHOR_DATE"] = date_iso
             env["GIT_COMMITTER_DATE"] = date_iso
 
