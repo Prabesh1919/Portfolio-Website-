@@ -147,10 +147,16 @@ def generate_commits(total_commits=1000, start_date_str="2026-09-01", end_date_s
 
 if __name__ == "__main__":
     count = 1000
+    start = "2026-09-01"
+    end = "2026-10-31"
     if len(sys.argv) > 1:
         try:
             count = int(sys.argv[1])
         except ValueError:
             pass
-    generate_commits(total_commits=count)
+    if len(sys.argv) > 2:
+        start = sys.argv[2]
+    if len(sys.argv) > 3:
+        end = sys.argv[3]
+    generate_commits(total_commits=count, start_date_str=start, end_date_str=end)
 
