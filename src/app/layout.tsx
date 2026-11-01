@@ -25,11 +25,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Prabesh Shah · Autonomous AI Engineer & Quantitative Systems Architect",
+    default: "Prabesh Shah · Autonomous AI & Multi-Agent Systems | Vector Trading Backend Engineer",
     template: "%s | Prabesh Shah",
   },
   description:
-    "Prabesh Shah is an AI Engineer and Quantitative Systems Architect specializing in autonomous multi-agent networks, algorithmic trading systems, and high-throughput distributed backends. Based in Nepal.",
+    "Prabesh Shah builds autonomous multi-agent AI systems, vector-powered trading backends, and distributed quantitative pipelines. AI Engineer & Quant Architect based in Nepal.",
   keywords: [
     "Prabesh Shah",
     "AI Engineer",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Prabesh Shah · Autonomous AI Engineer & Quantitative Systems Architect",
+    title: "Prabesh Shah · Autonomous Multi-Agent AI | Vector Trading Backend Engineer",
     description:
-      "Autonomous AI multi-agent architectures, algorithmic trading systems, and high-throughput distributed backends. Built for production durability.",
+      "Autonomous multi-agent AI systems, vector-powered trading backends, and high-throughput distributed pipelines. Built for production durability.",
     url: siteUrl,
     siteName: "Prabesh Shah Portfolio",
     locale: "en_US",
@@ -69,9 +69,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prabesh Shah · Autonomous AI Engineer & Quantitative Systems Architect",
+    title: "Prabesh Shah · Autonomous Multi-Agent AI | Vector Trading Backend Engineer",
     description:
-      "Autonomous AI multi-agent architectures, algorithmic trading systems, and high-throughput distributed backends.",
+      "Autonomous multi-agent AI systems, vector-powered trading backends, and high-throughput distributed pipelines.",
     images: ["/avatar.webp"],
     creator: "@PrabeshShah",
   },

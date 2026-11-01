@@ -715,6 +715,11 @@ export default function Home() {
                 </span>
               </h1>
 
+              {/* SEO subtitle — keywords: vector, autonomous, multi-agent, trading, backend */}
+              <p className="text-sm md:text-base text-slate-500 tracking-widest uppercase font-medium mt-2 mb-1" style={{ fontFamily: "var(--font-mono)" }}>
+                Autonomous · Multi-Agent AI · Vector Trading · Backend Systems
+              </p>
+
               <div className="sr-only" id="hero-bio">
                 Prabesh Shah is an AI Engineer and Quantitative Systems Architect based in Nepal, specializing in autonomous multi-agent networks, algorithmic trading systems, and high-throughput distributed backends.
               </div>
