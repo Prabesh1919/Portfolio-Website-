@@ -200,6 +200,27 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+  // ── UI/UX Pro Max: Scroll-reveal (Scroll Reveal · Subtle · power1.out · 350ms) ──
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return; // skip animation per skill checklist
+    const els = document.querySelectorAll(".reveal-on-scroll");
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("reveal-on-scroll-visible");
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   // Form
   const [formName, setFormName] = useState("");
   const [formEmail, setFormEmail] = useState("");
@@ -829,7 +850,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               ABOUT / SPECIALIZATIONS
           ══════════════════════════════════════════════════════════════ */}
-          <section id="about" className="scroll-mt-24 space-y-10">
+          <section id="about" className="scroll-mt-24 space-y-10 reveal-on-scroll">
             <div className="flex flex-col md:flex-row gap-6 items-end justify-between pb-8 relative">
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div className="flex items-center gap-6">
@@ -899,7 +920,7 @@ export default function Home() {
               ].map((card, idx) => (
                 <div
                   key={idx}
-                  className="aurora-card aurora-card-hover p-6 flex flex-col gap-5 group cursor-default animate-fadeInUp"
+                  className="aurora-card aurora-card-hover glass-pro-hover p-6 flex flex-col gap-5 group cursor-default animate-fadeInUp focus-aurora interactive"
                   style={{ animationDelay: `${idx * 0.12}s` }}
                 >
                   <div
@@ -925,7 +946,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               TECH STACK
           ══════════════════════════════════════════════════════════════ */}
-          <section id="tech" className="scroll-mt-24 space-y-10">
+          <section id="tech" className="scroll-mt-24 space-y-10 reveal-on-scroll">
             <div className="flex flex-col md:flex-row gap-6 items-end justify-between pb-8 relative">
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
@@ -976,7 +997,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               CRDT DISTRIBUTED LAB
           ══════════════════════════════════════════════════════════════ */}
-          <section id="crdt-lab" className="scroll-mt-24 space-y-10">
+          <section id="crdt-lab" className="scroll-mt-24 space-y-10 reveal-on-scroll">
             <div className="flex flex-col md:flex-row gap-6 items-end justify-between pb-8 relative">
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
@@ -1103,7 +1124,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               PROJECTS
           ══════════════════════════════════════════════════════════════ */}
-          <section id="projects" className="scroll-mt-24 space-y-10">
+          <section id="projects" className="scroll-mt-24 space-y-10 reveal-on-scroll">
             <div className="flex flex-col md:flex-row gap-6 items-end justify-between pb-8 relative">
               <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(139,92,246,0.3), rgba(6,182,212,0.3), transparent)" }} />
               <div>
@@ -1120,7 +1141,7 @@ export default function Home() {
                 <div
                   key={p.id}
                   onClick={() => setSelectedProject(p)}
-                  className="aurora-card aurora-card-hover overflow-hidden flex flex-col cursor-pointer group animate-fadeInUp"
+                  className="aurora-card aurora-card-hover glass-pro-hover overflow-hidden flex flex-col cursor-pointer group animate-fadeInUp focus-aurora interactive"
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   {/* Card top accent line */}
@@ -1180,7 +1201,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               TECHNICAL KNOWLEDGE BASE & FAQ (AEO / GEO / ENTITY SCHEMA)
           ══════════════════════════════════════════════════════════════ */}
-          <section id="faq" className="scroll-mt-24 space-y-8 max-w-4xl mx-auto">
+          <section id="faq" className="scroll-mt-24 space-y-8 max-w-4xl mx-auto reveal-on-scroll">
             <div className="text-center space-y-3">
               <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>05 — ARCHITECTURAL KNOWLEDGE BASE</p>
               <h2 id="faq-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Frequently Addressed Inquiries</h2>
@@ -1341,7 +1362,7 @@ export default function Home() {
           {/* ══════════════════════════════════════════════════════════════
               CONTACT
           ══════════════════════════════════════════════════════════════ */}
-          <section id="contact" className="scroll-mt-24 space-y-10 max-w-4xl mx-auto">
+          <section id="contact" className="scroll-mt-24 space-y-10 max-w-4xl mx-auto reveal-on-scroll">
             <div className="text-center space-y-3">
               <p className="text-xs font-medium" style={{ fontFamily: "var(--font-mono)", color: t.primary, letterSpacing: "0.12em" }}>06 — LET&apos;S CONNECT</p>
               <h2 id="contact-heading" className="text-3xl md:text-5xl font-bold tracking-tight text-white">Start a Conversation</h2>
@@ -1450,7 +1471,7 @@ export default function Home() {
                     <button
                       type="submit"
                       disabled={formStatus === "sending"}
-                      className="w-full py-3 rounded-xl text-sm font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+                      className="w-full py-3 rounded-xl text-sm font-medium text-white transition-all duration-300 flex items-center justify-center gap-2 hover:-translate-y-0.5 cta-pulse focus-aurora interactive"
                       style={{
                         fontFamily: "var(--font-mono)",
                         letterSpacing: "0.06em",
